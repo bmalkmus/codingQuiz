@@ -1,16 +1,17 @@
 // HTML Elements
-let start = document.getElementById("start-button");
-let quiz = document.getElementById("quiz");
-let timer = document.getElementById("timer");
-let counter = document.getElementById("counter");
-let questionTitle = document.getElementById("question-box");
-let options = document.getElementById("options");
-let ansOne = document.getElementById("one");
-let ansTwo = document.getElementById("two");
-let ansThree = document.getElementById("three");
-let ansFour = document.getElementById("four");
-let result = document.getElementById("right-wrong");
-let scoreboard = document.getElementById("score")
+const welcome = document.getElementById("intro")
+const start = document.getElementById("start-button");
+const quiz = document.getElementById("quiz");
+const timer = document.getElementById("timer");
+const counter = document.getElementById("counter");
+const questionTitle = document.getElementById("question-box");
+const options = document.getElementById("options");
+const ansOne = document.getElementById("one");
+const ansTwo = document.getElementById("two");
+const ansThree = document.getElementById("three");
+const ansFour = document.getElementById("four");
+const result = document.getElementById("right-wrong");
+const scoreboard = document.getElementById("score")
 
 
 
@@ -22,11 +23,13 @@ let startTime = 0;
 let countdownStartTime= 15*questions.length
 let score = 0;
 
+
 // Start Quiz and counter
 counter.innerHTML = startTime
 start.addEventListener('click', function(){
     presentQuestion();
     start.style.display = "none";
+    welcome.style.display ="none";
     quiz.style.display = "block";
     options.style.display ="block";
     let countDown = setInterval(function(){
@@ -46,12 +49,8 @@ start.addEventListener('click', function(){
     
 });
 
-
-
-
-
 // display Question
-// let askedQuestion = questions[currentQuestion];
+
 function presentQuestion (){
     let askedQuestion = questions[currentQuestion];
     
@@ -65,6 +64,7 @@ function presentQuestion (){
     
 };
 
+// check answer and result
 function checkAnswer(selection){
     if (selection == questions[currentQuestion].answer){
         score++;
@@ -72,6 +72,7 @@ function checkAnswer(selection){
     }
     else{
         // console.log('wrong');
+
         result.innerHTML = "<hr>" + "Wrong!"
 
     }
@@ -87,6 +88,7 @@ function checkAnswer(selection){
         let initials = prompt("The Quiz is over, please enter your intials");
         scoreboard.innerHTML = initials + " - " 
             + score;
+        clearInterval(countdownStartTime);
 
     }
 
