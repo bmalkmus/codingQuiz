@@ -24,6 +24,8 @@ counter.innerHTML = startTime
 start.addEventListener('click', function(){
     presentQuestion();
     start.style.display = "none";
+    quiz.style.display = "block";
+    options.style.display ="block";
     let countDown = setInterval(function(){
         counter.innerHTML = countdownStartTime;
         countdownStartTime -= 1;
@@ -39,9 +41,9 @@ start.addEventListener('click', function(){
 
 
 // display Question
-
+let askedQuestion = questions[currentQuestion];
 function presentQuestion (){
-    let askedQuestion = questions[currentQuestion];
+    // let askedQuestion = questions[currentQuestion];
     
 
     questionTitle.innerHTML =askedQuestion.title;
@@ -50,14 +52,22 @@ function presentQuestion (){
     ansTwo.innerHTML = askedQuestion.choices[1];
     ansThree.innerHTML = askedQuestion.choices[2];
     ansFour.innerHTML = askedQuestion.choices[3];
-
-    start.style.display = "none";
-    quiz.style.display = "block";
     
 };
 
-// start.style.display = "none";
-// quiz.style.display = "block";
+function checkAnswer(selection){
+    if (selection == questions[currentQuestion].answer){
+        console.log('correct');
+    }
+}
+
+    
+
+
+
+
+
+
 
 
 
