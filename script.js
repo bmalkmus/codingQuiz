@@ -9,6 +9,7 @@ let ansOne = document.getElementById("one");
 let ansTwo = document.getElementById("two");
 let ansThree = document.getElementById("three");
 let ansFour = document.getElementById("four");
+let scoreboard = document.getElementById("score")
 
 
 
@@ -18,6 +19,7 @@ let questionLength = questions.length - 1;
 let currentQuestion = 0;
 let startTime = 0;
 let countdownStartTime= 15*questions.length
+let score = 0;
 
 // Start Quiz and counter
 counter.innerHTML = startTime
@@ -31,6 +33,12 @@ start.addEventListener('click', function(){
         countdownStartTime -= 1;
         if (countdownStartTime < 0){
             clearInterval(countDown);
+            quiz.style.display="none";
+            options.style.display="none";
+            let initials = prompt("The Quiz is over, please enter your intials");
+            scoreboard.innerHTML = initials + " - " 
+            + score;
+
         }
     }, 1000);
     
@@ -41,9 +49,9 @@ start.addEventListener('click', function(){
 
 
 // display Question
-let askedQuestion = questions[currentQuestion];
+// let askedQuestion = questions[currentQuestion];
 function presentQuestion (){
-    // let askedQuestion = questions[currentQuestion];
+    let askedQuestion = questions[currentQuestion];
     
 
     questionTitle.innerHTML =askedQuestion.title;
@@ -57,8 +65,29 @@ function presentQuestion (){
 
 function checkAnswer(selection){
     if (selection == questions[currentQuestion].answer){
-        console.log('correct');
+        score++;
     }
+    // else{
+    //     // console.log('wrong');
+
+    // }
+
+    if (currentQuestion < questionLength){
+        currentQuestion++;
+        presentQuestion();
+    }
+    else{
+        quiz.style.display="none";
+        options.style.display="none";
+        let initials = prompt("The Quiz is over, please enter your intials");
+        scoreboard.innerHTML = initials + " - " 
+            + score;
+
+    }
+
+
+
+
 }
 
     
