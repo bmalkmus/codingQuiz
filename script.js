@@ -9,6 +9,7 @@ let ansOne = document.getElementById("one");
 let ansTwo = document.getElementById("two");
 let ansThree = document.getElementById("three");
 let ansFour = document.getElementById("four");
+let result = document.getElementById("right-wrong");
 let scoreboard = document.getElementById("score")
 
 
@@ -35,6 +36,7 @@ start.addEventListener('click', function(){
             clearInterval(countDown);
             quiz.style.display="none";
             options.style.display="none";
+            result.style.display="none";
             let initials = prompt("The Quiz is over, please enter your intials");
             scoreboard.innerHTML = initials + " - " 
             + score;
@@ -66,11 +68,13 @@ function presentQuestion (){
 function checkAnswer(selection){
     if (selection == questions[currentQuestion].answer){
         score++;
+        result.innerHTML = "<hr>" + "Correct!"
     }
-    // else{
-    //     // console.log('wrong');
+    else{
+        // console.log('wrong');
+        result.innerHTML = "<hr>" + "Wrong!"
 
-    // }
+    }
 
     if (currentQuestion < questionLength){
         currentQuestion++;
@@ -79,6 +83,7 @@ function checkAnswer(selection){
     else{
         quiz.style.display="none";
         options.style.display="none";
+        result.style.display="none";
         let initials = prompt("The Quiz is over, please enter your intials");
         scoreboard.innerHTML = initials + " - " 
             + score;
