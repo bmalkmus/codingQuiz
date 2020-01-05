@@ -21,18 +21,19 @@ let questionLength = questions.length - 1;
 let currentQuestion = 0;
 let startTime = 0;
 let countdownStartTime= 15*questions.length
-let score = 0;
-
+let score = 0
+let countDown
 
 // Start Quiz and counter
 counter.innerHTML = startTime
+
 start.addEventListener('click', function(){
     presentQuestion();
     start.style.display = "none";
     welcome.style.display ="none";
     quiz.style.display = "block";
     options.style.display ="block";
-    let countDown = setInterval(function(){
+    countDown = setInterval(function(){
         counter.innerHTML = countdownStartTime;
         countdownStartTime -= 1;
         if (countdownStartTime < 0){
@@ -67,13 +68,31 @@ function presentQuestion (){
 // check answer and result
 function checkAnswer(selection){
     if (selection == questions[currentQuestion].answer){
-        score++;
+        // score++;
         result.innerHTML = "<hr>" + "Correct!"
     }
     else{
         // console.log('wrong');
 
         result.innerHTML = "<hr>" + "Wrong!"
+        clearInterval(countDown);
+        countdownStartTime = countdownStartTime-15;
+        countDown = setInterval(function(){
+            counter.innerHTML = countdownStartTime;
+            countdownStartTime -= 1;
+            if (countdownStartTime < 0){
+                clearInterval(countDown);
+                quiz.style.display="none";
+                options.style.display="none";
+                result.style.display="none";
+                let initials = prompt("The Quiz is over, please enter your intials");
+                scoreboard.innerHTML = initials + " - " 
+                + score;
+    
+            }
+        }, 1000);
+        
+
 
     }
 
@@ -85,10 +104,12 @@ function checkAnswer(selection){
         quiz.style.display="none";
         options.style.display="none";
         result.style.display="none";
+        score=countdownStartTime;
         let initials = prompt("The Quiz is over, please enter your intials");
-        scoreboard.innerHTML = initials + " - " 
+        scoreboard.innerHTML = initials + " = " 
             + score;
-        clearInterval(countdownStartTime);
+
+        clearInterval(countDown);
 
     }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
     <script src="questions.js">
@@ -11,11 +12,13 @@
     
 </head>
 <body>
-    <div id="highscores">
-        <a href="/highscores.html">View Highscores</a>
-    </div>
-    <div id="timer"> Time:
-        <text id="counter"></text>
+    <div class="row">
+        <div class = "col-lg-6" id="highscores">
+            <a href="/highscores.html">View Highscores</a>
+        </div>
+        <div class = "col-lg-6" id="timer"> Time:
+            <text id="counter"></text>
+        </div>
     </div>
     <div class="container">
         <div id="intro"><p>Here is a little quiz to test your knowledge about coding! Answer quickly as your score will be determined by time. For every wrong answer, you will be deducted 15 seconds.</p></div>

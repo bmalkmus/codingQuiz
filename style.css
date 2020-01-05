@@ -1,3 +1,14 @@
 .container {
     margin: 0 auto;
-}
+    width: 650px;
+    text-align: center;
+    background-color: bisque;
+    box-sizing: content-box;
+
+};
+
+/* #timer {
+    align-content:flex-end; */
+
+
+};
