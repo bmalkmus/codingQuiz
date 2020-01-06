@@ -23,6 +23,7 @@ let startTime = 0;
 let countdownStartTime= 15*questions.length
 let score = 0
 let countDown
+let initials
 
 // Start Quiz and counter
 counter.innerHTML = startTime
@@ -41,9 +42,11 @@ start.addEventListener('click', function(){
             quiz.style.display="none";
             options.style.display="none";
             result.style.display="none";
-            let initials = prompt("The Quiz is over, please enter your intials");
+            initials = prompt("The Quiz is over, please enter your intials");
             scoreboard.innerHTML = initials + " - " 
             + score;
+            timer.style.display="none";
+            
 
         }
     }, 1000);
@@ -65,6 +68,9 @@ function presentQuestion (){
     
 };
 
+
+
+
 // check answer and result
 function checkAnswer(selection){
     if (selection == questions[currentQuestion].answer){
@@ -85,9 +91,11 @@ function checkAnswer(selection){
                 quiz.style.display="none";
                 options.style.display="none";
                 result.style.display="none";
-                let initials = prompt("The Quiz is over, please enter your intials");
+                initials = prompt("The Quiz is over, please enter your intials");
                 scoreboard.innerHTML = initials + " - " 
                 + score;
+                timer.style.display="none";
+                
     
             }
         }, 1000);
@@ -105,18 +113,27 @@ function checkAnswer(selection){
         options.style.display="none";
         result.style.display="none";
         score=countdownStartTime;
-        let initials = prompt("The Quiz is over, please enter your intials");
+        initials = prompt("The Quiz is over, please enter your intials");
         scoreboard.innerHTML = initials + " = " 
             + score;
 
         clearInterval(countDown);
+        timer.style.display="none";
+
+        
+
+
+
 
     }
+   
+};
+
+let highScoreList = {'intitials': initials, 'score': score};
 
 
 
 
-}
 
     
 
