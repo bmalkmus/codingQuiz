@@ -144,7 +144,16 @@ function saveScore() {
     highScoreResult.push(resultant);
     localStorage.setItem('scores', JSON.stringify (highScoreResult));
     finalArray = JSON.parse(localStorage.getItem('scores'));
+    finalArray.sort(function(a,b){
+        return b.score - a.score
+    });
     for (i = 0; i < finalArray.length; i++) {
+        var node = document.createElement("li");
+        console.log(finalArray[i]);
+        
+        var textnode = document.createTextNode(finalArray.initials[i] + finalArray.score[i]);         
+        node.appendChild(textnode);                              
+        highScoresList.appendChild(node);
 
     }
     };
