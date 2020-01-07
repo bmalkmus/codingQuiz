@@ -11,7 +11,8 @@ const ansTwo = document.getElementById("two");
 const ansThree = document.getElementById("three");
 const ansFour = document.getElementById("four");
 const result = document.getElementById("right-wrong");
-const scoreboard = document.getElementById("score")
+const scoreboard = document.getElementById("score");
+const highScoresList =document.getElementById("highscores");
 
 
 
@@ -24,6 +25,13 @@ let countdownStartTime= 15*questions.length
 let score = 0
 let countDown
 let initials
+let resultant
+let highScoreResult
+let scoreArray
+let finalArray
+
+
+scoreArray = [];
 
 // Start Quiz and counter
 counter.innerHTML = startTime
@@ -38,14 +46,17 @@ start.addEventListener('click', function(){
         counter.innerHTML = countdownStartTime;
         countdownStartTime -= 1;
         if (countdownStartTime < 0){
-            clearInterval(countDown);
             quiz.style.display="none";
-            options.style.display="none";
-            result.style.display="none";
-            initials = prompt("The Quiz is over, please enter your intials");
-            scoreboard.innerHTML = initials + " - " 
+        options.style.display="none";
+        result.style.display="none";
+        score=countdownStartTime;
+        initials = prompt("The Quiz is over, please enter your intials");
+        scoreboard.innerHTML = initials + " = " 
             + score;
-            timer.style.display="none";
+
+        clearInterval(countDown);
+        timer.style.display="none";
+            
             
 
         }
@@ -87,14 +98,9 @@ function checkAnswer(selection){
             counter.innerHTML = countdownStartTime;
             countdownStartTime -= 1;
             if (countdownStartTime < 0){
-                clearInterval(countDown);
-                quiz.style.display="none";
-                options.style.display="none";
-                result.style.display="none";
-                initials = prompt("The Quiz is over, please enter your intials");
-                scoreboard.innerHTML = initials + " - " 
-                + score;
-                timer.style.display="none";
+
+                saveScore();
+                
                 
     
             }
@@ -109,27 +115,56 @@ function checkAnswer(selection){
         presentQuestion();
     }
     else{
-        quiz.style.display="none";
-        options.style.display="none";
-        result.style.display="none";
-        score=countdownStartTime;
-        initials = prompt("The Quiz is over, please enter your intials");
-        scoreboard.innerHTML = initials + " = " 
-            + score;
-
-        clearInterval(countDown);
-        timer.style.display="none";
-
-        
-
-
-
-
+        saveScore();
+  
     }
-   
 };
 
-let highScoreList = {'intitials': initials, 'score': score};
+function saveScore() {
+    quiz.style.display="none";
+    options.style.display="none";
+    result.style.display="none";
+    score =countdownStartTime;
+    initials = prompt("The Quiz is over, please enter your intials");
+    scoreboard.innerHTML = initials + " = " 
+            + score;
+
+    clearInterval(countDown);
+    timer.style.display="none";
+        
+    resultant = {initials, score};
+
+
+    
+    pushScore();
+};
+
+    function pushScore() {
+    highScoreResult = JSON.parse(localStorage.getItem("scores"));
+    highScoreResult.push(resultant);
+    localStorage.setItem('scores', JSON.stringify (highScoreResult));
+    finalArray = JSON.parse(localStorage.getItem('scores'));
+    for (i = 0; i < finalArray.length; i++) {
+
+    }
+    };
+
+
+
+
+
+if (!localStorage.getItem("scores")) {
+    
+  let scores = []
+
+localStorage.setItem('scores', JSON.stringify (scores));
+}
+
+
+
+
+
+
 
 
 

@@ -1,14 +1,32 @@
 .container {
-    margin: 0 auto;
+    margin: 250px auto;
     width: 650px;
+    height: 400px;
     text-align: center;
     background-color: bisque;
     box-sizing: content-box;
-
-};
-
-/* #timer {
-    align-content:flex-end; */
+    font-size: 30px;
+    color: rgba(28, 68, 10, 0.918);
 
 
-};
+
+}
+
+.timer {
+    text-align: right;
+    font-size: 30px;
+
+}
+
+.answers {
+    color: rgb(24, 78, 24);
+    font-weight: bold;
+    
+    
+}
+
+
+    
+
+
+

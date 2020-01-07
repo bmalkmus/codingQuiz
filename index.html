@@ -16,23 +16,24 @@
         <div class = "col-lg-6" id="highscores-link">
             <a href="highscores.html">View Highscores</a>
         </div>
-        <div class = "col-lg-6" id="timer"> Time:
+        <div class = "col-lg-6 timer" id ="timer"> 
+            Time:
             <text id="counter"></text>
         </div>
     </div>
     <div class="container">
-        <div id="intro"><p>Here is a little quiz to test your knowledge about coding! Answer quickly as your score will be determined by time. For every wrong answer, you will be deducted 15 seconds.</p></div>
+        <div id="intro"><p class = "texts">Here is a little quiz to test your knowledge about coding! Answer quickly as your score will be determined by time. For every wrong answer, you will be deducted 15 seconds.</p></div>
         <div id="start-button">Start Quiz</div>
         <div id="quiz" style = "display: none;">
             <div>
-            <p id="question-box"></p>
+            <p  class = "texts"  id="question-box"></p>
             </div>
         </div>
         <div id="options" style ="display: none;">
-                <div class= "answers" onclick = "checkAnswer('one')" id="one"></div>
-                <div class= "answers" onclick = "checkAnswer('two')" id ="two"></div>
-                <div class= "answers" onclick = "checkAnswer('three')" id ="three"></div>
-                <div class= "answers" onclick = "checkAnswer('four')" id ="four"></div>
+                <div class= "answers btn btn-primary btn-lg btn-block" onclick = "checkAnswer('one')" id="one"></div>
+                <div class= "answers btn btn-primary btn-lg btn-block" onclick = "checkAnswer('two')" id ="two"></div>
+                <div class= "answers btn btn-primary btn-lg btn-block" onclick = "checkAnswer('three')" id ="three"></div>
+                <div class= "answers btn btn-primary btn-lg btn-block" onclick = "checkAnswer('four')" id ="four"></div>
 
         </div>
         <div id="right-wrong"></div>
