@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Highscores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>High Scores</h1>
+    <div class="container">
     <div class="score">
-        <!-- <ol id = "Highscores"> -->
-
-        <!-- </ol> -->
-
-        
+        <ol id = "Highscores">
+        </ol>
     </div>
+    <button type="button" class="btn btn-outline-secondary" onclick = " window.location.href = 'index.html' " >Quiz Retake</button>
+    <button type="button" class="btn btn-outline-dark" onclick="clearHigh()">Reset High Score</button>
+    </div>
+    
 </body>
-<!-- <script src="questions.js"></script>
-<script src="script.js"></script> -->
+<script src="highscore.js"></script>
 </html>
