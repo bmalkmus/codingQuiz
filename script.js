@@ -156,17 +156,7 @@ function saveScore() {
     }
 
     };
-// print highscore when link is clicked
-// function list (){    
-//     welcome.style.display ="none";
-//     start.style.display ="none";
-//     scoreboard.style.display ="none";
-//     quiz.style.display ="none";
-//     counter.style.display ="none";
-//     options.style.display ="none";
-//     highScoresList.style.display ="block";
 
-// }
 
 
 
