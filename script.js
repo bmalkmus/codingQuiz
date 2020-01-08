@@ -29,9 +29,7 @@ let resultant
 let highScoreResult
 let scoreArray
 let finalArray
-
-
-scoreArray = [];
+let object23
 
 // Start Quiz and counter
 counter.innerHTML = startTime
@@ -85,11 +83,9 @@ function presentQuestion (){
 // check answer and result
 function checkAnswer(selection){
     if (selection == questions[currentQuestion].answer){
-        // score++;
         result.innerHTML = "<hr>" + "Correct!"
     }
     else{
-        // console.log('wrong');
 
         result.innerHTML = "<hr>" + "Wrong!"
         clearInterval(countDown);
@@ -119,7 +115,7 @@ function checkAnswer(selection){
   
     }
 };
-
+// prompt name and score
 function saveScore() {
     quiz.style.display="none";
     options.style.display="none";
@@ -127,7 +123,7 @@ function saveScore() {
     score =countdownStartTime;
     initials = prompt("The Quiz is over, please enter your intials");
     scoreboard.innerHTML = initials + " = " 
-            + score;
+            + score + '<hr>';
 
     clearInterval(countDown);
     timer.style.display="none";
@@ -138,7 +134,7 @@ function saveScore() {
     
     pushScore();
 };
-
+// push score to local storage
     function pushScore() {
     highScoreResult = JSON.parse(localStorage.getItem("scores"));
     highScoreResult.push(resultant);
@@ -148,26 +144,48 @@ function saveScore() {
         return b.score - a.score
     });
     for (i = 0; i < finalArray.length; i++) {
-        var node = document.createElement("li");
-        console.log(finalArray[i]);
+        console.log(i);
         
-        var textnode = document.createTextNode(finalArray.initials[i] + finalArray.score[i]);         
-        node.appendChild(textnode);                              
-        highScoresList.appendChild(node);
+         object23 = finalArray[i];
+         console.log(object23);
+         
+        var list = document.createElement("li");
+        var textList = document.createTextNode(Object.values(object23));         
+        list.appendChild(textList);                              
+        highScoresList.appendChild(list);
 
     }
+
     };
+// print highscore when link is clicked
+function list (){
+    console.log(highScoresList);
+    
+    welcome.style.display ="none";
+    start.style.display ="none";
+    scoreboard.style.display ="none";
+    quiz.style.display ="none";
+    counter.style.display ="none";
+    options.style.display ="none";
+    highScoresList.style.display ="block";
+
+}
 
 
 
 
 
+    
+
+// set local storage
 if (!localStorage.getItem("scores")) {
     
-  let scores = []
+    let scores = []
+  
+  localStorage.setItem('scores', JSON.stringify (scores));
+};
 
-localStorage.setItem('scores', JSON.stringify (scores));
-}
+
 
 
 
