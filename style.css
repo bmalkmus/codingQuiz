@@ -1,7 +1,8 @@
 .container {
     margin: 250px auto;
     width: 650px;
-    height: 400px;
+    min-height: 400px;
+    height: auto;
     text-align: center;
     background-color: bisque;
     box-sizing: content-box;

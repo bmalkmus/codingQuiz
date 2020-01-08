@@ -144,13 +144,12 @@ function saveScore() {
         return b.score - a.score
     });
     for (i = 0; i < finalArray.length; i++) {
-        console.log(i);
         
          object23 = finalArray[i];
-         console.log(object23);
+        
          
-        var list = document.createElement("li");
-        var textList = document.createTextNode(Object.values(object23));         
+        let list = document.createElement("li");
+        let textList = document.createTextNode(Object.values(object23));         
         list.appendChild(textList);                              
         highScoresList.appendChild(list);
 
@@ -158,18 +157,16 @@ function saveScore() {
 
     };
 // print highscore when link is clicked
-function list (){
-    console.log(highScoresList);
-    
-    welcome.style.display ="none";
-    start.style.display ="none";
-    scoreboard.style.display ="none";
-    quiz.style.display ="none";
-    counter.style.display ="none";
-    options.style.display ="none";
-    highScoresList.style.display ="block";
+// function list (){    
+//     welcome.style.display ="none";
+//     start.style.display ="none";
+//     scoreboard.style.display ="none";
+//     quiz.style.display ="none";
+//     counter.style.display ="none";
+//     options.style.display ="none";
+//     highScoresList.style.display ="block";
 
-}
+// }
 
 
 
@@ -184,6 +181,16 @@ if (!localStorage.getItem("scores")) {
   
   localStorage.setItem('scores', JSON.stringify (scores));
 };
+
+function reset(){
+    location.reload(true)
+};
+
+function clearHigh(){
+    localStorage.clear();
+    reset();
+
+}
 
 
 
